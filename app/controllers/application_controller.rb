@@ -41,6 +41,14 @@ class ApplicationController < Sinatra::Base
     end
   end
 
+  post '/login' do
+    user = User.find_by(name: params[:name])
+    binding.pry
+    #check the user name and password against the db
+    #then redirect to either tweets or back to login page?
+    redirect to 'tweets/tweets'
+  end
+
   helpers do
     def logged_in?
       #returns true if logged in
