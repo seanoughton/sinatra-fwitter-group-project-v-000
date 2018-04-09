@@ -40,27 +40,24 @@ class ApplicationController < Sinatra::Base
   helpers do
     def logged_in?
       #returns true if logged in
-      #!!session[:user_id]
+      !!session[:user_id]
       #!!current_user #if there  is a current user returns true
+=begin
       if session[:user_id]
         true
       else
         false
       end
+=end
     end
 
     def current_user
       #tests to see if there is a session param called :user_id
       #if there is one, that means that a user was created and saved to the database
       #if so, this uses the find method on User to find that user instance
-      #if there is a user
-
       if session[:user_id]
         @current_user = User.find(session[:user_id])
-      else
-        @current_user = false
       end
-
     end
   end
 
