@@ -43,6 +43,7 @@ class ApplicationController < Sinatra::Base
 
   post '/login' do
     user = User.find_by(name: params[:name])
+    user.authenticate(params[:password])
     binding.pry
     #check the user name and password against the db
     #then redirect to either tweets or back to login page?
