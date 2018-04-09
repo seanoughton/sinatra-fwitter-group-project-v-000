@@ -26,6 +26,10 @@ class ApplicationController < Sinatra::Base
     erb :tweets
   end
 
+  get '/login' do
+    erb :login
+  end
+
   post '/signup' do
     if params[:username].empty? || params[:email].empty? || params[:password].empty?
       redirect to '/signup'
