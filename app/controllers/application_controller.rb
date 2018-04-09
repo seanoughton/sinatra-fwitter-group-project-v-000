@@ -14,11 +14,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get  '/signup' do
-    #redirect '/tweets' if logged_in?
-    logged_in?
     erb :signup
-    #the logic to not allow a logged in user to view the sign up has to
-    #live somewhere
   end
 
   get '/tweets' do
@@ -26,13 +22,14 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/signup' do
-    if !params[:username].empty? && !params[:email].empty? && !params[:password].empty?
-      #create a user
-      #@user = User.create(name: params[:username], email: params[:email], password: params[:password])
-      #@user.save
-      redirect '/tweets'
-    else
+    if !params[:username].empty? || !params[:email].empty? || !params[:password].empty?
       redirect '/signup'
+    else
+      #create a user
+      @user = User.create(name: params[:username], email: params[:email], password: params[:password])
+      @user.save
+      session[:user_id] = @user.id
+      redirect '/tweets'
     end
   end
 
