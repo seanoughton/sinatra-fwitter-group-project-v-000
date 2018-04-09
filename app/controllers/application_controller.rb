@@ -23,7 +23,11 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/tweets' do
-    erb :'tweets/tweets'
+    if logged_in?
+      erb :'tweets/tweets'
+    else
+      redirect '/login'
+    end
   end
 
   get '/login' do
@@ -38,6 +42,8 @@ class ApplicationController < Sinatra::Base
     if logged_in?
       session.clear
       redirect '/login'
+    else
+      redirect '/'
     end
   end
 
