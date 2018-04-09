@@ -14,8 +14,11 @@ class ApplicationController < Sinatra::Base
   end
 
   get  '/signup' do
-    #if a user is logged in then you redirect them to tweets
-    erb :signup
+    if !logged_in? #if not logged in
+      erb :signup
+    else
+      erb :tweets
+    end
   end
 
   get '/tweets' do
@@ -26,15 +29,15 @@ class ApplicationController < Sinatra::Base
     if !params[:username].empty? && !params[:email].empty? && !params[:password].empty?
       redirect '/tweets'
     else
+      binding.pry
       redirect '/signup'
     end
   end
 
   helpers do
     def logged_in?
-      #returns true of there is a user_id in the session_secret
-      #and false if there is not
-      !!session[:user_id]
+      #returns true if logged in
+      !session[:user_id]
     end
   end
 
