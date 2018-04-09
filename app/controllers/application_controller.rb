@@ -42,7 +42,7 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/login' do
-    user = User.find_by(name: params[:name])
+    user = User.find_by(username: params[:username])
     user.authenticate(params[:password])
     binding.pry
     #check the user name and password against the db
