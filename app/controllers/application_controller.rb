@@ -22,9 +22,13 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/signup' do
-    binding.pry
+    if !!params[:username]
+      redirect '/tweets'
+    else
+      redirect '/signup'
+    end
     #if the user tries to signup without a user name, redirect them back to the signup page
-    redirect '/tweets'
+
   end
 
 end
