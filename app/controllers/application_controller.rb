@@ -22,14 +22,14 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/signup' do
-    if !params[:username].empty? || !params[:email].empty? || !params[:password].empty?
-      redirect '/signup'
+    binding.pry
+    if !params[:username].empty? #|| !params[:email].empty? || !params[:password].empty?
+      redirect to '/signup'
     else
-      #create a user
-      @user = User.create(name: params[:username], email: params[:email], password: params[:password])
-      @user.save
-      session[:user_id] = @user.id
-      redirect '/tweets'
+      #@user = User.create(name: params[:username], email: params[:email], password: params[:password])
+      #@user.save
+      #session[:user_id] = @user.id
+      redirect to '/tweets'
     end
   end
 
