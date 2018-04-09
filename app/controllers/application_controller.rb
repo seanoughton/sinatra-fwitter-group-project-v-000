@@ -14,7 +14,11 @@ class ApplicationController < Sinatra::Base
   end
 
   get  '/signup' do
+    #redirect '/tweets' if logged_in?
+    logged_in?
     erb :signup
+    #the logic to not allow a logged in user to view the sign up has to
+    #live somewhere
   end
 
   get '/tweets' do
