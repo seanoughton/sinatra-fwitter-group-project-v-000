@@ -17,7 +17,7 @@ class ApplicationController < Sinatra::Base
     if !logged_in? #if not logged in
       erb :signup
     else
-      erb :tweets
+      redirect '/tweets'
     end
   end
 
@@ -29,7 +29,6 @@ class ApplicationController < Sinatra::Base
     if !params[:username].empty? && !params[:email].empty? && !params[:password].empty?
       redirect '/tweets'
     else
-      binding.pry
       redirect '/signup'
     end
   end
