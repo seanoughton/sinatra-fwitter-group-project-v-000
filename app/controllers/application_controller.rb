@@ -22,6 +22,7 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/signup' do
+    binding.pry
     redirect '/tweets'
   end
 
