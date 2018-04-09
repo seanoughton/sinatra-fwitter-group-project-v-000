@@ -22,7 +22,8 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/signup' do
-    if !params[:username].empty?
+    binding.pry
+    if !params[:username].empty? && !params[:email].empty? && !params[:password].empty?
       redirect '/tweets'
     else
       redirect '/signup'
