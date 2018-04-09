@@ -47,6 +47,10 @@ class ApplicationController < Sinatra::Base
     end
   end
 
+  get "/users/:slug" do
+
+  end
+
 
 
   post '/signup' do
