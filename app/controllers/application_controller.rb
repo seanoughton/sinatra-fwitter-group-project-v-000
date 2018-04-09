@@ -16,8 +16,8 @@ class ApplicationController < Sinatra::Base
   get  '/signup' do
     if !logged_in? #if not logged in
       erb :signup
-    else
-      redirect '/tweets'
+    #else
+      #redirect '/tweets'
     end
   end
 
@@ -27,6 +27,9 @@ class ApplicationController < Sinatra::Base
 
   post '/signup' do
     if !params[:username].empty? && !params[:email].empty? && !params[:password].empty?
+      #create a user
+      #@user = User.create(name: params[:username], email: params[:email], password: params[:password])
+      #@user.save
       redirect '/tweets'
     else
       redirect '/signup'
