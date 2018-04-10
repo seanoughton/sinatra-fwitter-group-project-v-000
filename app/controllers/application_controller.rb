@@ -48,7 +48,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/users/:slug" do
-
+    erb :'users/show'
   end
 
 
