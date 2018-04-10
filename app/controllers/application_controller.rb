@@ -59,6 +59,12 @@ class ApplicationController < Sinatra::Base
     erb :'tweets/create_tweet'
   end
 
+  post '/tweets/new' do
+    @tweet = Tweet.create(params[:tweet])
+    binding.pry
+
+  end
+
 
 
   post '/signup' do
