@@ -60,7 +60,6 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/tweets/new' do
-    binding.pry
     if params[:tweet][:content].empty?
       redirect '/tweets/new'
     else
