@@ -24,6 +24,8 @@ class ApplicationController < Sinatra::Base
 
   get '/tweets' do
     if logged_in?
+      @tweets = Tweet.all
+      @user = current_user
       binding.pry
       erb :'tweets/tweets'
     else
