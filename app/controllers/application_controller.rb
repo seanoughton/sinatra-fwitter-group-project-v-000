@@ -49,7 +49,6 @@ class ApplicationController < Sinatra::Base
 
   get "/users/:slug" do
     @user = User.find_by(username: params[:slug])
-    #@tweet = @user.tweets[0].content
     erb :'/users/show'
   end
 
