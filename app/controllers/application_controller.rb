@@ -60,9 +60,14 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/tweets/new' do
-    @tweet = Tweet.create(params[:tweet])
-    @tweet.user = current_user
-    @tweet.save
+    binding.pry
+    if params[:tweet][:content].empty?
+      redirect '/tweets/new'
+    else
+      @tweet = Tweet.create(params[:tweet])
+      @tweet.user = current_user
+      @tweet.save
+    end
 
   end
 
