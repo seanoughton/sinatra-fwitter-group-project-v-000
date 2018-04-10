@@ -61,6 +61,7 @@ class ApplicationController < Sinatra::Base
 
   post '/tweets/new' do
     @tweet = Tweet.create(params[:tweet])
+    @tweet.user = current_user
     binding.pry
 
   end
