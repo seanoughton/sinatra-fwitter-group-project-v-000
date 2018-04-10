@@ -89,15 +89,13 @@ class ApplicationController < Sinatra::Base
     @tweet.save
   end
 
-  delete '/tweets/:content/delete' do
-    @tweet = Tweet.find_by(content: params[:content])
-    #@tweet = Tweet.find(params[:id])
+  delete '/tweets/:id/delete' do
+    @tweet = Tweet.find(params[:id])
     if @tweet.user == current_user
       @tweet.delete
     else
       redirect '/tweets'
     end
-
   end
 
   post '/tweets/new' do
