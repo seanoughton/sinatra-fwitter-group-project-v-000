@@ -99,7 +99,7 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/tweets/new' do
-    if params[:tweet][:content].empty?
+    if params[:tweet][:content].empty? || params[:tweet][:content].split.size < 1
       redirect '/tweets/new'
     else
       @tweet = Tweet.create(params[:tweet])
