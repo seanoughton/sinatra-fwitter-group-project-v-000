@@ -56,6 +56,7 @@ class ApplicationController < Sinatra::Base
 
   get '/tweets/new' do
     if logged_in?
+      @user = current_user
       erb :'tweets/create_tweet'
     else
       redirect '/login'
@@ -104,6 +105,7 @@ class ApplicationController < Sinatra::Base
       @tweet = Tweet.create(params[:tweet])
       @tweet.user = current_user
       @tweet.save
+      redirect '/tweets'
     end
   end
 
