@@ -17,7 +17,7 @@ class ApplicationController < Sinatra::Base
     if !logged_in?
       erb :'users/create_user'
     else
-      redirect 'tweets/tweets'
+      redirect '/tweets'
     end
 
   end
@@ -34,7 +34,7 @@ class ApplicationController < Sinatra::Base
     if !logged_in?
       erb :'users/login'
     else
-      redirect 'tweets/tweets'
+      redirect '/tweets'
     end
   end
 
