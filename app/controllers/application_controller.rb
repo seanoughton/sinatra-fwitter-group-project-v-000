@@ -65,6 +65,8 @@ class ApplicationController < Sinatra::Base
 
   get '/tweets/:id' do
     binding.pry
+    @tweet = Tweet.find(params[:id])
+    @user = current_user
     erb :'tweets/show_tweet'
   end
 
@@ -76,7 +78,6 @@ class ApplicationController < Sinatra::Base
       @tweet.user = current_user
       @tweet.save
     end
-
   end
 
 
