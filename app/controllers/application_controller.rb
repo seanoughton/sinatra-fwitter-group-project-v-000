@@ -19,7 +19,6 @@ class ApplicationController < Sinatra::Base
     else
       redirect '/tweets'
     end
-
   end
 
 
@@ -134,14 +133,6 @@ class ApplicationController < Sinatra::Base
   helpers do
     def logged_in? #returns true if logged in
       !!session[:user_id]
-      #!!current_user #if there  is a current user returns true
-=begin
-      if session[:user_id]
-        true
-      else
-        false
-      end
-=end
     end
 
     def current_user
