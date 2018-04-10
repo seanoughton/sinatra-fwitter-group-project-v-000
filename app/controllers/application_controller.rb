@@ -93,8 +93,6 @@ class ApplicationController < Sinatra::Base
     #find out if the user who is trying delete is the tweet.user
     #if so let them, if not redirect '/tweets'
     @tweet = Tweet.find(params[:id])
-    binding.pry
-
     @tweet.delete
   end
 
