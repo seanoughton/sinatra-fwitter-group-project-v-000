@@ -74,7 +74,8 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/tweets/:id/edit' do
-    binding.pry
+    @tweet = Tweet.create(params[:tweet])
+    @user = current_user
     erb :'tweets/edit_tweet'
   end
 
