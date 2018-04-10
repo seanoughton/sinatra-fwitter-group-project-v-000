@@ -64,10 +64,17 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/tweets/:id' do
-    binding.pry
-    @tweet = Tweet.find(params[:id])
-    @user = current_user
-    erb :'tweets/show_tweet'
+    if logged_in?
+      @tweet = Tweet.find(params[:id])
+      @user = current_user
+      erb :'tweets/show_tweet'
+    else
+      redirect '/login'
+    end
+  end
+
+  get '/tweets/:id/edit' do
+    erb :'tweets/edit_tweet'
   end
 
   post '/tweets/new' do
