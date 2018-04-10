@@ -2,6 +2,9 @@ require './config/environment'
 
 class ApplicationController < Sinatra::Base
 
+  extend Slugifiable::ClassMethods
+  include Slugifiable::InstanceMethods
+
   configure do
     set :public_folder, 'public'
     set :views, 'app/views'
@@ -48,6 +51,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/users/:slug" do
+    binding.pry
     @user = User.find_by(username: params[:slug])
     @tweets = @user.tweets
     erb :'/users/show'
