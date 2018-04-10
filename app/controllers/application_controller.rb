@@ -80,10 +80,9 @@ class ApplicationController < Sinatra::Base
   end
 
   patch '/tweets/:id/edit' do
-    binding.pry
-    #you have to retrieve the tweet from the db
-    #then update the tweet content
-    #then save the tweet
+    @tweet = Tweet.find(params[:id])
+    @tweet.update(params[:tweet])
+    @tweet.save
   end
 
   post '/tweets/new' do
