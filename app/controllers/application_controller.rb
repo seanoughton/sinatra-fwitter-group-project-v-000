@@ -74,6 +74,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/tweets/:id/edit' do
+    binding.pry
     erb :'tweets/edit_tweet'
   end
 
