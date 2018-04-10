@@ -85,14 +85,19 @@ class ApplicationController < Sinatra::Base
 
   patch '/tweets/:id/edit' do
     @tweet = Tweet.find(params[:id])
-    @tweet.update(params[:tweet])
-    @tweet.save
+    if @tweet.user == current_user
+      @tweet.update(params[:tweet])
+      @tweet.save
+    else
+      redirect '/tweets'
+    end
   end
 
   delete '/tweets/:id/delete' do
     @tweet = Tweet.find(params[:id])
     if @tweet.user == current_user
       @tweet.delete
+      redirect '/tweets'
     else
       redirect '/tweets'
     end

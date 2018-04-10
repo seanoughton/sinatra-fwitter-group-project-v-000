@@ -1,11 +1,11 @@
 <h3>Welcome, <%=@user.username%></h3>
 <h3>Here are all of the current tweets</h3>
 
-<ol>
+<ul>
 <%@tweets.all.each do |tweet|%>
-    <li><%= tweet.content %></li>
+    <li><h4><%= tweet.user.username %>: <%= tweet.content %></h4></li>
 <%end%>
-</ol>
+</ul>
 
 <h4><a href="/tweets/new">Create a Tweet</a></h4>
 
