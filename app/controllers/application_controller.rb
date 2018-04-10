@@ -91,8 +91,7 @@ class ApplicationController < Sinatra::Base
 
   delete '/tweets/:id/delete' do
     @tweet = Tweet.find(params[:id])
-    binding.pry
-    @tweet.update(params[:tweet])
+    @tweet.delete
   end
 
   post '/tweets/new' do
