@@ -79,6 +79,13 @@ class ApplicationController < Sinatra::Base
     erb :'tweets/edit_tweet'
   end
 
+  patch '/tweets/:id/edit' do
+    binding.pry
+    #you have to retrieve the tweet from the db
+    #then update the tweet content
+    #then save the tweet
+  end
+
   post '/tweets/new' do
     if params[:tweet][:content].empty?
       redirect '/tweets/new'

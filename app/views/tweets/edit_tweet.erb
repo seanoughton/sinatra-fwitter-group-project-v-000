@@ -4,3 +4,13 @@
 <div>
   <%=@tweet.content%>
 </div>
+
+<h3>Enter New Content Here</h3>
+<%binding.pry%>
+
+<form action="/tweets/edit" method="POST">
+  <input type="hidden" name="_method" value="PATCH">
+  <input type="text" name="tweet[content]" id="content">
+
+  <input type="submit" id="submit" value="Edit Tweet">
+</form>
